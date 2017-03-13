@@ -1,0 +1,120 @@
+name: "RSRCNN"
+layer {
+  name: "input"
+  type: "Input"
+  top: "data"
+  input_param {
+    shape {
+      dim: 1
+      dim: 3
+      dim: 227
+      dim: 227
+    }
+  }
+}
+
+layer {
+  name: "sconv1"
+  type: "Convolution"
+  bottom: "data"
+  top: "sconv1"
+  param {
+    lr_mult: 1
+  }
+  param {
+    lr_mult: 0.1
+  }
+  convolution_param {
+    num_output: 64
+    kernel_size: 9
+    stride: 1
+    pad: 4
+    weight_filler {
+      type: "gaussian"
+      std: 0.001
+    }
+    bias_filler {
+      type: "constant"
+      value: 0
+    }
+  }
+}
+
+layer {
+  name: "srelu1"
+  type: "ReLU"
+  bottom: "sconv1"
+  top: "sconv1"
+}
+
+layer {
+  name: "sconv2"
+  type: "Convolution"
+  bottom: "sconv1"
+  top: "sconv2"
+  param {
+    lr_mult: 1
+  }
+  param {
+    lr_mult: 0.1
+  }
+  convolution_param {
+    num_output: 32
+    kernel_size: 5
+    stride: 1
+    pad: 2
+    weight_filler {
+      type: "gaussian"
+      std: 0.001
+    }
+    bias_filler {
+      type: "constant"
+      value: 0
+    }
+  }
+}
+
+layer {
+  name: "srelu2"
+  type: "ReLU"
+  bottom: "sconv2"
+  top: "sconv2"
+}
+
+layer {
+  name: "sconv3"
+  type: "Convolution"
+  bottom: "sconv2"
+  top: "sconv3"
+  param {
+    lr_mult: 0.1
+  }
+  param {
+    lr_mult: 0.1
+  }
+  convolution_param {
+    num_output: 3
+    kernel_size: 5
+    stride: 1
+    pad: 2
+    weight_filler {
+      type: "gaussian"
+      std: 0.001
+    }
+    bias_filler {
+      type: "constant"
+      value: 0
+    }
+  }
+}
+layer {
+	name: "sum"
+	type: "Eltwise"
+	bottom: "data"
+	bottom: "sconv3"
+	top: "sum"
+	eltwise_param {
+	  operation: 1
+	}
+}
+

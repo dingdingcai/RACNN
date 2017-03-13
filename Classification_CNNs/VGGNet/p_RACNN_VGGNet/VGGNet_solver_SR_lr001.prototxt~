@@ -1,0 +1,16 @@
+net: "/home/dingding/ding3/stanford_cars/freeze/VGGNet/VGG_SR_lr001/VGGNet_SR_lr001.prototxt"
+test_iter: 187
+test_interval: 5000
+base_lr: 1e-5
+lr_policy: "multistep"
+gamma: 0.1
+display: 5000
+max_iter: 50000000
+momentum: 0.95
+weight_decay: 0.0005
+snapshot: 5000
+stepvalue:400000
+snapshot_prefix: "/home/dingding/ding2/stanford_cars/models/VGGNet/freeze_SR_lr001"
+
+solver_mode: GPU
+

@@ -1,0 +1,27 @@
+# The train/test net protocol buffer definition
+net: "examples/RACNN/RSRCNN_train/RSRCNN_net.prototxt"
+
+test_initialization: false
+
+# The base learning rate, momentum and the weight decay of the network.
+lr_policy: "multistep"
+stepvalue:200000
+stepvalue:700000
+stepvalue:1200000
+gamma:0.5
+base_lr: 2e-9
+momentum: 0.9
+weight_decay: 0
+
+# Display every 100 iterations
+display: 100
+
+# The maximum number of iterations
+max_iter: 15000000
+
+# snapshot intermediate results
+snapshot: 5000
+
+snapshot_prefix: "examples/RACNN/RSRCNN_train/RSRCNN"
+solver_mode: GPU
+

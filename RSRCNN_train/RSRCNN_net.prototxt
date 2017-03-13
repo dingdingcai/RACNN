@@ -1,0 +1,127 @@
+name: "RSRCNN"
+layer {
+  name: "data"
+  type: "HDF5Data"
+  top: "data"
+  top: "label"
+  hdf5_data_param {
+    source: "examples/RACNN/RSRCNN_train/train.txt"
+    batch_size: 32
+  }
+  include: { phase: TRAIN }
+}
+
+
+layer {
+  name: "sconv1"
+  type: "Convolution"
+  bottom: "data"
+  top: "sconv1"
+  param {
+    lr_mult: 1
+  }
+  param {
+    lr_mult: 0.1
+  }
+  convolution_param {
+    num_output: 64
+    kernel_size: 9
+    stride: 1
+    pad: 4
+    weight_filler {
+      type: "gaussian"
+      std: 0.001
+    }
+    bias_filler {
+      type: "constant"
+      value: 0
+    }
+  }
+}
+
+layer {
+  name: "srelu1"
+  type: "ReLU"
+  bottom: "sconv1"
+  top: "sconv1"
+}
+
+layer {
+  name: "sconv2"
+  type: "Convolution"
+  bottom: "sconv1"
+  top: "sconv2"
+  param {
+    lr_mult: 1
+  }
+  param {
+    lr_mult: 0.1
+  }
+  convolution_param {
+    num_output: 32
+    kernel_size: 5
+    stride: 1
+    pad: 2
+    weight_filler {
+      type: "gaussian"
+      std: 0.001
+    }
+    bias_filler {
+      type: "constant"
+      value: 0
+    }
+  }
+}
+
+layer {
+  name: "srelu2"
+  type: "ReLU"
+  bottom: "sconv2"
+  top: "sconv2"
+}
+
+layer {
+  name: "sconv3"
+  type: "Convolution"
+  bottom: "sconv2"
+  top: "sconv3"
+  param {
+    lr_mult: 0.1
+  }
+  param {
+    lr_mult: 0.1
+  }
+  convolution_param {
+    num_output: 3
+    kernel_size: 5
+    stride: 1
+    pad: 2
+    weight_filler {
+      type: "gaussian"
+      std: 0.001
+    }
+    bias_filler {
+      type: "constant"
+      value: 0
+    }
+  }
+}
+
+layer {
+	name: "sum"
+	type: "Eltwise"
+	bottom: "data"
+	bottom: "sconv3"
+	top: "sum"
+	eltwise_param {
+	  operation: 1
+	}
+}
+
+layer {
+  name: "loss"
+  type: "EuclideanLoss"
+  bottom: "sum"
+  bottom: "label"
+  top: "loss"
+}

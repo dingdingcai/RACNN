@@ -1,0 +1,16 @@
+net: "examples/RACNN/Classification_CNNs/VGGNet/p_RACNN_VGGNet/p_RACNN_VGGNet.prototxt"
+test_iter: 2897
+test_interval: 5000
+base_lr: 1e-6
+lr_policy: "multistep"
+stepvalue:600000
+gamma: 0.1
+display: 5000
+max_iter: 700000
+momentum: 0.95
+weight_decay: 0.0005
+snapshot: 5000
+snapshot_prefix: "examples/RACNN/Classification_CNNs/VGGNet/p_RACNN_VGGNet/p_RACNN_VGGNet"
+
+solver_mode: GPU
+

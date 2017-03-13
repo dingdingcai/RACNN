@@ -1,0 +1,14 @@
+net: "examples/RACNN/Classification_CNNs/AlexNet/p_RACNN_alexnet.prototxt"
+test_iter: 2897
+test_interval: 5000
+base_lr: 1e-6
+gamma: 0.1
+lr_policy: "multistep"
+stepvalue: 600000
+display: 5000
+max_iter: 700000
+momentum: 0.95
+weight_decay: 0.0005
+snapshot: 5000
+snapshot_prefix:"examples/RACNN/Classification_CNNs/lexNet/p_RACNN_alexnet"
+solver_mode: GPU
