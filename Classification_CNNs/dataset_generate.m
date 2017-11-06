@@ -34,16 +34,7 @@ for i = 3:length(files)
         imwrite(upscaled, [target_low_path ]);
         fprintf(f1, [target_low_path ' ' num2str(i-2) '\n']);
         target_orig_path = [orig_path files(i).name];
-        imwrite(orig, [target_orig_path '/' class_name(j).name]); 
+        imwrite(orig, [target_orig_path '/' class_name(j).name]);
         fprintf(f2, [target_orig_path '/' class_name(j).name ' ' num2str(i-2) '\n']);
     end
 end
-
-
-
-
-
-
-
-
-
