@@ -8,6 +8,8 @@ AlexNet: contains plain AlexNet, guassian weight RACNN for AlexNet and pre-train
 
 VGGNet: contains plain VGGNet, guassian weight RACNN for VGGNet and pre-trained weight RACNN for VGGNet
 
+Similiarly, GoogLeNet can be modified for RACNN in the same way as AlexNet and VGGNet.
+
 For convenience and visualisation of training process, jupyter notebook is recommended to use and run .ipynb training scripts
 
 
