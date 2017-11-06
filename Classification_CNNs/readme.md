@@ -7,3 +7,7 @@ The two fine-grained datasets should be croppedto obtain object-centered images 
 AlexNet: contains plain AlexNet, guassian weight RACNN for AlexNet and pre-trained weight RACNN for AlexNet
 
 VGGNet: contains plain VGGNet, guassian weight RACNN for VGGNet and pre-trained weight RACNN for VGGNet
+
+For convenience and visualisation of training process, jupyter notebook is recommended to use and run .ipynb training scripts
+
+
