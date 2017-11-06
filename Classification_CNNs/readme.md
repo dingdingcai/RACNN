@@ -2,7 +2,7 @@ dataset_generate.m: for generating the varying low resolution dataset e.g. 25x25
 from high resolution image set of Stanford Car and UCSD Birds 200-2011
 
 dataset:  is for experimental dataset,like Stanford Cars, UCSD Birds-200-2011 amd Oxford Flowers 102 Categories, they need to be downloaded from http://ai.stanford.edu/~jkrause/cars/car_dataset.html, http://www.vision.caltech.edu/visipedia/CUB-200-2011.html and http://www.robots.ox.ac.uk/~vgg/data/flowers/102/index.html .
-The two fine-grained datasets should be croppedto obtain object-centered images according to provided boundboxes.
+The first two fine-grained datasets should be croppedto obtain object-centered images according to provided boundboxes.
 
 AlexNet: contains plain AlexNet, guassian weight RACNN for AlexNet and pre-trained weight RACNN for AlexNet
 
